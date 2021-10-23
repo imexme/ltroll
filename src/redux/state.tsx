@@ -1,6 +1,6 @@
 // function Store ()
 
-type MessageType ={
+type MessageType = {
     id: number
     message: string
 }
@@ -9,15 +9,13 @@ type DialogType ={
     id: number
     name: string
 }
-type PostType ={
+export type PostType ={
     id: number
     message: string
     likesCount: number
 }
 
-type ProfilePageType ={
-    id: number
-    message: string
+export type ProfilePageType ={
     posts: Array<PostType>
 }
 
@@ -28,13 +26,13 @@ type DialogPageType ={
 type SidebarType = {
 }
 
-type RootStateType ={
+export type RootStateType ={
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
     sidebar: SidebarType
 }
 
-let state: RootStateType = {
+export let state: RootStateType = {
             profilePage: {
                 posts: [
                     { id: 1, message: 'message 1', likesCount: 12 },
@@ -96,5 +94,4 @@ let state: RootStateType = {
 //        rerenderEntireTree = observer;
 // }
 
-export default state;
  // window.store = store;
