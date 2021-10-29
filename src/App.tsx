@@ -11,8 +11,6 @@ type StateProp ={
     state: RootStateType
 }
 
-
-
 const App = (props: StateProp) => {
 
     return (
@@ -21,18 +19,29 @@ const App = (props: StateProp) => {
                 <Navbar />
                 <div className='app-wrapper-content'>
                    <BrowserRouter>
-                    <Route path='/dialogs' component = {Dialogs} />
+                       <div>
+                    <Route  exact path='/dialogs'  component = {Dialogs} />
                        <Route path='/profile' component = {Profile} />
-
-                       {/*<Profile profilePage={props.profilePage}/>*/}
+                       </div>
                    </BrowserRouter>
                 </div>
             </div>
         )
 }
-// type MessageType = {
-//     message:string
-// }
+type MessageType = {
+    message:string
+}
+
+function HelloMessage (props: MessageType) {
+    let postMessageRef = React.createRef()
+    const addPost = () => {
+
+    }
+    return <div>{props.message}
+        <textarea></textarea>
+    <button onClick={}>add post</button>
+    </div>
+}
 
 
 export default App;

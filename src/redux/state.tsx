@@ -1,11 +1,13 @@
-// function Store ()
+import Message from "../components/Dialogs/Message/Message";
 
-type MessageType = {
+function Store ()
+
+export type MessageType = {
     id: number
     message: string
 }
 
-type DialogType ={
+export type DialogType ={
     id: number
     name: string
 }
@@ -19,7 +21,7 @@ export type ProfilePageType ={
     posts: Array<PostType>
 }
 
-type DialogPageType ={
+export type DialogPageType ={
     dialogs: Array<DialogType>
     messages: Array<MessageType>
 }
@@ -39,7 +41,8 @@ export let state: RootStateType = {
                     { id: 2, message: 'message 2', likesCount: 11 },
                     { id: 3, message: 'message 3', likesCount: 11 },
                     { id: 4, message: 'message 4', likesCount: 11 }
-                ]
+                ],
+                newPostText: 'fffdff'
             },
             dialogsPage: {
                 dialogs: [
@@ -61,19 +64,16 @@ export let state: RootStateType = {
             sidebar: {}
         }
 
-//         rerenderEntireTree() {
-//             console.log('state')
-//         },
-//         addPost()  {
-//             let newPost = {
-//                 id: 5,
-//                 message: state.profilePage.newPostText,
-//                 likesCount: 0
-//             };
-//             state.profilePage.posts.push(newPost);
-//             state.profilePage.newPostText = '';
-//             rerenderEntireTree(state);
-//         },
+        // rerenderEntireTree() {
+        // },
+        addPost(){
+            let newPost (props:MessageType) = {
+             {props.message}
+            }
+            state.profilePage.posts.push(newPost);
+            state.profilePage.newPostText = '';
+            rerenderEntireTree(state);
+        }
 //         updateNewPostText (newText)
 //         subscribe (observer) {
 //             rerenderEntireTree = observer;
@@ -94,4 +94,4 @@ export let state: RootStateType = {
 //        rerenderEntireTree = observer;
 // }
 
- // window.store = store;
+ window.store = store;
