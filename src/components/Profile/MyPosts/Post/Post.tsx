@@ -4,7 +4,6 @@ import {PostType} from "../../../../redux/state";
 
 
 
-
 const Post = (props:PostType) => {
   return (
     <div className={s.item}>

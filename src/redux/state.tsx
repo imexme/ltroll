@@ -1,6 +1,6 @@
 import Message from "../components/Dialogs/Message/Message";
 
-function Store ()
+// function Store ()
 
 export type MessageType = {
     id: number
@@ -19,6 +19,8 @@ export type PostType ={
 
 export type ProfilePageType ={
     posts: Array<PostType>
+    messageForNewPost: string
+
 }
 
 export type DialogPageType ={
@@ -36,6 +38,7 @@ export type RootStateType ={
 
 export let state: RootStateType = {
             profilePage: {
+                messageForNewPost: "edw",
                 posts: [
                     { id: 1, message: 'message 1', likesCount: 12 },
                     { id: 2, message: 'message 2', likesCount: 11 },
@@ -66,32 +69,20 @@ export let state: RootStateType = {
 
         // rerenderEntireTree() {
         // },
-        addPost(){
-            let newPost (props:MessageType) = {
-             {props.message}
-            }
-            state.profilePage.posts.push(newPost);
-            state.profilePage.newPostText = '';
-            rerenderEntireTree(state);
-        }
-//         updateNewPostText (newText)
-//         subscribe (observer) {
-//             rerenderEntireTree = observer;
-//         }
-//     },
-//     getState() {
-//         return this._state;
-//     }
-// },
-//
-//  rerenderEntireTree () {
-//     console.log('state')
-// },
-//
-//
-//
-// export const subscribe = (observer) => {
-//        rerenderEntireTree = observer;
-// }
+      export const addPost = (postText: string) => {
+          const newPost: PostType = {
+              id: new Date().getTime(),
+              likesCount: 0,
+              message: postText
+          }
+          state.profilePage.posts.push(newPost)
+          renderTree(state)
+      }
 
- window.store = store;
+      export const changeNewText= (newText: string) => {
+            state.profilePage.messageForNewPost = newText
+          renderTree(state)
+
+      }
+
+export default  state

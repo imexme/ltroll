@@ -2,7 +2,7 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {MessageType, ProfilePageType} from "../../../redux/state";
-import {DialogPageType} from "../../../redux/state";
+import {RootStateType} from "../../../redux/state";
 
 
 
@@ -33,7 +33,7 @@ let onPostChange = () => {
             <div>
                 <div>
                     <textarea onChange = {onPostChange} ref={newPostElement}
-                    value={props.newPostText}
+                    value={newPostText}
                     />
                 </div>
                 <div>
