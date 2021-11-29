@@ -24,9 +24,10 @@ function Profile(PostType) {
     return (
         <div>
             <ProfileInfo />
-            <MyPosts posts={posts}
+            <MyPosts posts={props.profilePage.posts}
             newPostText = {props.profilePage.newPostText}
-            addPost = {props.addPost}
+                     dispatch={props.dispatch}
+                     addPost = {props.addPost}
             />
         </div>
     )

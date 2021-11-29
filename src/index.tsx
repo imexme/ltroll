@@ -1,13 +1,15 @@
 import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import './index.css';
-import {state} from "./redux/state";
+import store, {RootStateType} from "./redux/state";
+import ReactDOM from "react-dom";
 import {renderTree} from "./render";
+import state from "./redux/state";
 
 
-renderTree(state)
 
-
+store.subscribe(renderTree)
+renderTree(store)
 
 
 // If you want your app to work offline and load faster, you can change
