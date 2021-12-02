@@ -3,11 +3,19 @@ import {renderTree} from "../render";
 
 // function Store ()
 
+<<<<<<< HEAD
 let onChange = () => {
+=======
+let onChange= () => {
+>>>>>>> 15ad6b3652f052768b7fd32008fcc480a721094e
 
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 15ad6b3652f052768b7fd32008fcc480a721094e
 export type MessageType = {
     id: number;
     message: string;
@@ -22,6 +30,7 @@ export type PostType = {
     id: number;
     message: string;
     likesCount: number;
+<<<<<<< HEAD
 }
 
 export type ProfilePageType = {
@@ -71,6 +80,59 @@ export const addPostAC = (postText: string) => {
         type: "ADD-POST",
         postText: postText,
     } as const
+=======
+}
+
+export type ProfilePageType = {
+    posts: Array<PostType>;
+    messageForNewPost: string;
+    newPostText: string;
+}
+
+export type DialogPageType = {
+    dialogs: Array<DialogType>;
+    messages: Array<MessageType>;
+    newMessageBody: string;
+}
+
+type SidebarType = {}
+
+export type RootStateType = {
+    profilePage: ProfilePageType;
+    dialogsPage: DialogPageType;
+    sidebar: SidebarType;
+}
+
+export type StoreType = {
+    _state: RootStateType;
+    changeNewText: (newText: string) => void;
+    addPost: (postText: string) => void;
+    _onChange: (state: RootStateType) => void;
+    subscribe: (callback: (store: RootStateType) => void) => void;
+    getState: () => RootStateType;
+    dispatch: (action: ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC>) => void
+}
+
+
+
+export  type AddPostActionType = ReturnType<typeof addPostAC>
+export type ChangeNewTextActionType = ReturnType<typeof changeNewTextAC>
+export type ActionsTypes = AddPostActionType | ChangeNewTextActionType
+
+
+export const addPostAC = (postText: string) => {
+        return {
+            type: "ADD-POST",
+            postText: postText,
+        }
+}
+
+export const changeNewTextAC = (newText: string) => {
+        return {
+            type: "CHANGE-NEW-TEXT",
+            newText: newText,
+        } as const
+>>>>>>> 15ad6b3652f052768b7fd32008fcc480a721094e
 }
 
 
@@ -111,7 +173,11 @@ export const store: StoreType = {
         this._onChange(this._state)
 
     },
+<<<<<<< HEAD
     addPost(postText: string) {
+=======
+     addPost (postText: string) {
+>>>>>>> 15ad6b3652f052768b7fd32008fcc480a721094e
         const newPost: PostType = {
             id: new Date().getTime(),
             message: postText,
@@ -123,6 +189,7 @@ export const store: StoreType = {
     _onChange() {
 
     },
+<<<<<<< HEAD
     subscribe(callback) {
         this._onChange = callback
     },
@@ -145,5 +212,30 @@ export const store: StoreType = {
         }
     }
 }
+=======
+     subscribe  (callback)  {
+        this._onChange = callback
+    },
+    getState(){
+        return this._state
+    },
+
+    dispatch (action){
+    if (action.type === "ADD-POST") {
+        const newPost: PostType = {
+            id: new Date().getTime(),
+            message: action.postText,
+            likesCount: 0
+        }
+        this._state.profilePage.posts.push(newPost)
+        this._onChange(this._state)
+    } else if (action.type === "CHANGE-NEW-TEXT")
+        {
+            this._state.profilePage.messageForNewPost = action.newText
+            this._onChange(this._state)
+    }
+}
+}
+>>>>>>> 15ad6b3652f052768b7fd32008fcc480a721094e
 
 export default store

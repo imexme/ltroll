@@ -15,6 +15,7 @@ import store from "./redux/state";
 
 export type PropsType = {
     store: StoreType
+<<<<<<< HEAD
 }
 
 type MessageType = {
@@ -25,6 +26,18 @@ type MessageType = {
     addPostCallback: (message: string) => void;
 }
 
+=======
+}
+
+type MessageType = {
+    posts: Array<PostType>;
+     message: string;
+    changeNewTextCallback: (newText: string) => void;
+    dispatch: (action: ActionsTypes) => void;
+    addPostCallback: (message: string) => void;
+}
+
+>>>>>>> 15ad6b3652f052768b7fd32008fcc480a721094e
 const App: React.FC<PropsType> = (props) => {
     const state = store.getState()
 
@@ -46,11 +59,22 @@ const App: React.FC<PropsType> = (props) => {
                             changeNewTextCallback={props.store.changeNewText.bind(props.store)}
                         />}/>
                     </div>
+<<<<<<< HEAD
                 </BrowserRouter>
             </div>
         </div>
     )
 
+=======
+                    <div>
+
+                            </div>
+                </BrowserRouter>
+            </div>
+        </div>
+    )
+
+>>>>>>> 15ad6b3652f052768b7fd32008fcc480a721094e
     function HelloMessage(props: MessageType) {
         const addPost = () => {
              // props.addPostCallback(props.message)
