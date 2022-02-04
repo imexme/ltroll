@@ -5,8 +5,9 @@ import App from "./App";
 import React from "react";
 
 export const renderTree = (store: StoreType) => {
+
     ReactDOM.render(
-        <BrowserRouter>
-            <App store={store}/>
-        </BrowserRouter>, document.getElementById('root'));
+            <App store={store}/>,
+
+    document.getElementById('root'));
 }
